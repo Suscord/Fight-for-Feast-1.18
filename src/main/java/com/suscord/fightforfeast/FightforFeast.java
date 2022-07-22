@@ -38,6 +38,7 @@ public class FightforFeast
         // Register the setup method for modloading
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         eventBus.addListener(this::setup);
+        eventBus.addListener(this::clientSetup);
 
         ModEntityTypes.register(eventBus);
 

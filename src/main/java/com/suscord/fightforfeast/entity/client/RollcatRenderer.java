@@ -13,7 +13,7 @@ import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 public class RollcatRenderer extends GeoEntityRenderer<Rollcat> {
     public RollcatRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new RollcatModel());
-        this.shadowRadius = 0.3f;
+        this.shadowRadius = 0.5f;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class RollcatRenderer extends GeoEntityRenderer<Rollcat> {
     public RenderType getRenderType(Rollcat animatable, float partialTicks, PoseStack stack,
                                     MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn,
                                     ResourceLocation textureLocation) {
-        stack.scale(1.0F, 1.0F, 1.0F);
+        stack.scale(1.4F, 1.4F, 1.4F);
         return super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
     }
 }
