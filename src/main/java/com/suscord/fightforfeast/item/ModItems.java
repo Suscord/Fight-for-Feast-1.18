@@ -14,9 +14,11 @@ public class ModItems {
             DeferredRegister.create(ForgeRegistries.ITEMS, FightforFeast.MOD_ID);
 
     public static final RegistryObject<Item> ROLLCAT_SPAWN_EGG = ITEMS.register("rollcat_spawn_egg",
-            () -> new ForgeSpawnEggItem(ModEntityTypes.ROLLCAT,0x948e8d, 0x3b3635,
-                    new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+            () -> new ForgeSpawnEggItem(ModEntityTypes.ROLLCAT,0x5d2622, 0x5d2c28,
+                    new Item.Properties().tab(ModCreativeModeTab.TAB_FFORF)));
 
+    public static final RegistryObject<Item> ROLLCAKE = ITEMS.register("rollcake",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TAB_FFORF).food(ModFoods.ROLLCAKE)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

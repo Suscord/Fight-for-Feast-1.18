@@ -1,3 +1,9 @@
 {
+  "itemGroup.fightforfeast": "Fight For Feast",
+
+  "item.fightforfeast.rollcake" : "Rollcake",
+
+  "item.fightforfeast.rollcat_spawn_egg": "Rollcat Spawn Egg",
+
   "entity.fightforfeast.rollcat": "Rollcat"
 }

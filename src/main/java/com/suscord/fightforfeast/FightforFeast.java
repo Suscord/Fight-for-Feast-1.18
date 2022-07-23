@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import com.suscord.fightforfeast.entity.ModEntityTypes;
 import com.suscord.fightforfeast.entity.client.RollcatRenderer;
 import com.suscord.fightforfeast.entity.custom.Rollcat;
+import com.suscord.fightforfeast.item.ModItems;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -41,6 +42,7 @@ public class FightforFeast
         eventBus.addListener(this::clientSetup);
 
         ModEntityTypes.register(eventBus);
+        ModItems.register(eventBus);
 
         GeckoLib.initialize();
 
