@@ -20,6 +20,9 @@ public class ModItems {
     public static final RegistryObject<Item> ROLLCAKE = ITEMS.register("rollcake",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TAB_FFORF).food(ModFoods.ROLLCAKE)));
 
+    public static final RegistryObject<Item> MILK_CHOCOLATE = ITEMS.register("milk_chocolate",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TAB_FFORF).food(ModFoods.MILK_CHOCOLATE)));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

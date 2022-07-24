@@ -5,7 +5,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 
 public class ModFoods {
-    public static final FoodProperties ROLLCAKE = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.5F).build();
-
+    public static final FoodProperties ROLLCAKE = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.3F).build();
+    public static final FoodProperties MILK_CHOCOLATE = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.4F).fast().build();
 
 }
