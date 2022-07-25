@@ -1,10 +1,15 @@
 {
   "itemGroup.fightforfeast": "Fight For Feast",
 
-  "item.fightforfeast.rollcake" : "Rollcake",
-  "item.fightforfeast.milk_chocolate": "Milk Chocolate",
+  "item.fightforfeast.butter": "Butter",
 
+  "item.fightforfeast.buttered_toast": "Buttered Toast",
+  "item.fightforfeast.milk_chocolate": "Milk Chocolate",
+  "item.fightforfeast.rollcake" : "Rollcake",
+
+  "item.fightforfeast.buttered_ghost_spawn_egg": "Buttered Ghost Spawn Egg",
   "item.fightforfeast.rollcat_spawn_egg": "Rollcat Spawn Egg",
 
+  "entity.fightforfeast.butteredghost": "Buttered Ghost",
   "entity.fightforfeast.rollcat": "Rollcat"
 }

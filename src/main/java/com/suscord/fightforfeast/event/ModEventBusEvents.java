@@ -2,7 +2,8 @@ package com.suscord.fightforfeast.event;
 
 import com.suscord.fightforfeast.FightforFeast;
 import com.suscord.fightforfeast.entity.ModEntityTypes;
-import com.suscord.fightforfeast.entity.custom.Butteredghost;
+import com.suscord.fightforfeast.entity.passive.Butteredghost;
+import com.suscord.fightforfeast.entity.passive.Rollcat;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -12,6 +13,7 @@ public class ModEventBusEvents {
 
     @SubscribeEvent
     public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
-        event.put(ModEntityTypes.ROLLCAT.get(), Butteredghost.setAttributes());
+        event.put(ModEntityTypes.ROLLCAT.get(), Rollcat.setAttributes());
+        event.put(ModEntityTypes.BUTTEREDGHOST.get(), Butteredghost.setAttributes());
     }
 }

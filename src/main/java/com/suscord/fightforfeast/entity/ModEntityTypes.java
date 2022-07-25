@@ -1,7 +1,8 @@
 package com.suscord.fightforfeast.entity;
 
 import com.suscord.fightforfeast.FightforFeast;
-import com.suscord.fightforfeast.entity.custom.Butteredghost;
+import com.suscord.fightforfeast.entity.passive.Butteredghost;
+import com.suscord.fightforfeast.entity.passive.Rollcat;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -14,11 +15,17 @@ public class ModEntityTypes {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
             DeferredRegister.create(ForgeRegistries.ENTITIES, FightforFeast.MOD_ID);
 
-    public static final RegistryObject<EntityType<Butteredghost>> ROLLCAT =
+    public static final RegistryObject<EntityType<Rollcat>> ROLLCAT =
             ENTITY_TYPES.register("rollcat",
-                    () -> EntityType.Builder.of(Butteredghost::new, MobCategory.CREATURE)
+                    () -> EntityType.Builder.of(Rollcat::new, MobCategory.CREATURE)
                             .sized(0.8f, 0.6f)
                             .build(new ResourceLocation(FightforFeast.MOD_ID, "rollcat").toString()));
+
+    public static final RegistryObject<EntityType<Butteredghost>> BUTTEREDGHOST =
+            ENTITY_TYPES.register("butteredghost",
+                    () -> EntityType.Builder.of(Butteredghost::new, MobCategory.CREATURE)
+                            .sized(0.7f, 0.7f)
+                            .build(new ResourceLocation(FightforFeast.MOD_ID, "butteredghost").toString()));
 
 
     public static void register(IEventBus eventBus) {

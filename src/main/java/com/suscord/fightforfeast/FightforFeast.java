@@ -1,8 +1,9 @@
 package com.suscord.fightforfeast;
 
 import com.mojang.logging.LogUtils;
+import com.suscord.fightforfeast.client.renderer.entity.ButteredghostRenderer;
 import com.suscord.fightforfeast.entity.ModEntityTypes;
-import com.suscord.fightforfeast.entity.client.RollcatRenderer;
+import com.suscord.fightforfeast.client.renderer.entity.RollcatRenderer;
 import com.suscord.fightforfeast.item.ModItems;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Blocks;
@@ -42,6 +43,7 @@ public class FightforFeast
 
     private void clientSetup(final FMLClientSetupEvent event) {
 
+        EntityRenderers.register(ModEntityTypes.BUTTEREDGHOST.get(), ButteredghostRenderer::new);
         EntityRenderers.register(ModEntityTypes.ROLLCAT.get(), RollcatRenderer::new);
     }
 
