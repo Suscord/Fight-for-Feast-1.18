@@ -1,11 +1,10 @@
 package com.suscord.fightforfeast.entity.passive;
 
-import com.suscord.fightforfeast.entity.ModEntityTypes;
+import com.suscord.fightforfeast.entity.FFORFEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -24,7 +23,6 @@ import net.minecraft.world.entity.animal.FlyingAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
@@ -40,8 +38,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.EnumSet;
 
-import static com.suscord.fightforfeast.item.ModItems.BUTTER;
-import static com.suscord.fightforfeast.item.ModItems.MILK_CHOCOLATE;
+import static com.suscord.fightforfeast.item.FFORFItems.BUTTER;
 
 public class Butteredghost extends Animal implements IAnimatable, FlyingAnimal {
     private AnimationFactory factory = new AnimationFactory(this);
@@ -88,7 +85,7 @@ public class Butteredghost extends Animal implements IAnimatable, FlyingAnimal {
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob pOtherParent) {
 
-        return ModEntityTypes.BUTTEREDGHOST.get().create(serverLevel);
+        return FFORFEntityTypes.BUTTEREDGHOST.get().create(serverLevel);
     }
 
     //Animation
@@ -104,6 +101,7 @@ public class Butteredghost extends Animal implements IAnimatable, FlyingAnimal {
                 0, this::predicate));
     }
 
+    //Sound
     @Override
     public AnimationFactory getFactory() {
         return this.factory;
@@ -133,6 +131,7 @@ public class Butteredghost extends Animal implements IAnimatable, FlyingAnimal {
         return false;
     }
 
+    //Random wandering
     class BGhostWanderGoal extends Goal {
         private static final int WANDER_THRESHOLD = 22;
 

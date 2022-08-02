@@ -5,7 +5,7 @@ import com.suscord.fightforfeast.entity.passive.Butteredghost;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
-public class ButteredGhostModel extends AnimatedGeoModel<Butteredghost> {
+public class ButteredghostModel extends AnimatedGeoModel<Butteredghost> {
     @Override
     public ResourceLocation getModelLocation(Butteredghost object) {
         return new ResourceLocation(FightforFeast.MOD_ID, "geo/butteredghost.geo.json");

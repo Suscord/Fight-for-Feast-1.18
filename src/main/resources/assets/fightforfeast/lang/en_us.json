@@ -1,10 +1,16 @@
 {
   "itemGroup.fightforfeast": "Fight For Feast",
 
+  "block.fightforfeast.peppermint_block": "Peppermint Block",
+
   "item.fightforfeast.butter": "Butter",
+  "item.fightforfeast.peppermint_shard": "Peppermint Shard",
+
+  "item.fightforfeast.peppermint_lance": "Peppermint Lance",
 
   "item.fightforfeast.buttered_toast": "Buttered Toast",
   "item.fightforfeast.milk_chocolate": "Milk Chocolate",
+  "item.fightforfeast.peppermint_cane": "Peppermint Cane",
   "item.fightforfeast.rollcake" : "Rollcake",
 
   "item.fightforfeast.buttered_ghost_spawn_egg": "Buttered Ghost Spawn Egg",

@@ -1,14 +1,10 @@
 package com.suscord.fightforfeast.entity.passive;
 
-import com.suscord.fightforfeast.FightforFeast;
-import com.suscord.fightforfeast.entity.ModEntityTypes;
-import com.suscord.fightforfeast.item.ModFoods;
-import com.suscord.fightforfeast.item.ModItems;
+import com.suscord.fightforfeast.entity.FFORFEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -22,8 +18,6 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
@@ -35,8 +29,7 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-import static com.suscord.fightforfeast.item.ModItems.*;
-import static com.suscord.fightforfeast.item.ModItems.MILK_CHOCOLATE;
+import static com.suscord.fightforfeast.item.FFORFItems.MILK_CHOCOLATE;
 
 public class Rollcat extends Animal implements IAnimatable {
     private AnimationFactory factory = new AnimationFactory(this);
@@ -69,7 +62,7 @@ public class Rollcat extends Animal implements IAnimatable {
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob pOtherParent) {
 
-        return ModEntityTypes.ROLLCAT.get().create(serverLevel);
+        return FFORFEntityTypes.ROLLCAT.get().create(serverLevel);
     }
 
     //Animation

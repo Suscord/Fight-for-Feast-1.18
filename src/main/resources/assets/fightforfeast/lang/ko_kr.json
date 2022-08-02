@@ -1,10 +1,16 @@
 {
   "itemGroup.fightforfeast": "파이트 포어 페스트",
 
+  "block.fightforfeast.peppermint_block": "페퍼민트 블록",
+
   "item.fightforfeast.butter": "버터",
+  "item.fightforfeast.peppermint_shard": "페퍼민트 조각",
+
+  "item.fightforfeast.peppermint_lance": "페퍼민트 랜스",
 
   "item.fightforfeast.buttered_toast": "버터 발린 토스트",
   "item.fightforfeast.milk_chocolate": "밀크 초콜릿",
+  "item.fightforfeast.peppermint_cane": "페퍼민트 막대",
   "item.fightforfeast.rollcake": "롤케이크",
 
   "item.fightforfeast.buttered_ghost_spawn_egg": "버터 발린 유령 생성 알",

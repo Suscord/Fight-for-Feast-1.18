@@ -1,10 +1,11 @@
 package com.suscord.fightforfeast;
 
 import com.mojang.logging.LogUtils;
+import com.suscord.fightforfeast.block.FFORFBlocks;
 import com.suscord.fightforfeast.client.renderer.entity.ButteredghostRenderer;
-import com.suscord.fightforfeast.entity.ModEntityTypes;
+import com.suscord.fightforfeast.entity.FFORFEntityTypes;
 import com.suscord.fightforfeast.client.renderer.entity.RollcatRenderer;
-import com.suscord.fightforfeast.item.ModItems;
+import com.suscord.fightforfeast.item.FFORFItems;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -31,8 +32,9 @@ public class FightforFeast
         eventBus.addListener(this::setup);
         eventBus.addListener(this::clientSetup);
 
-        ModEntityTypes.register(eventBus);
-        ModItems.register(eventBus);
+        FFORFEntityTypes.register(eventBus);
+        FFORFItems.register(eventBus);
+        FFORFBlocks.register(eventBus);
 
         GeckoLib.initialize();
 
@@ -43,8 +45,9 @@ public class FightforFeast
 
     private void clientSetup(final FMLClientSetupEvent event) {
 
-        EntityRenderers.register(ModEntityTypes.BUTTEREDGHOST.get(), ButteredghostRenderer::new);
-        EntityRenderers.register(ModEntityTypes.ROLLCAT.get(), RollcatRenderer::new);
+        EntityRenderers.register(FFORFEntityTypes.BUTTEREDGHOST.get(), ButteredghostRenderer::new);
+        //EntityRenderers.register(FFORFEntityTypes.FRUITJELLYSLIME.get(), FruitjellyslimeRenderer::new);
+        EntityRenderers.register(FFORFEntityTypes.ROLLCAT.get(), RollcatRenderer::new);
     }
 
     private void setup(final FMLCommonSetupEvent event)

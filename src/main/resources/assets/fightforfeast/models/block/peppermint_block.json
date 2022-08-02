@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "fightforfeast:block/peppermint_block_top",
+    "side": "fightforfeast:block/peppermint_block_side"
+  }
+}

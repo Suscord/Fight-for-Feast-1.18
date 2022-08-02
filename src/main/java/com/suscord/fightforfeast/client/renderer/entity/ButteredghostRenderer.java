@@ -3,7 +3,7 @@ package com.suscord.fightforfeast.client.renderer.entity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.suscord.fightforfeast.FightforFeast;
-import com.suscord.fightforfeast.client.model.entity.ButteredGhostModel;
+import com.suscord.fightforfeast.client.model.entity.ButteredghostModel;
 import com.suscord.fightforfeast.entity.passive.Butteredghost;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -13,7 +13,7 @@ import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 public class ButteredghostRenderer extends GeoEntityRenderer<Butteredghost> {
     public ButteredghostRenderer(EntityRendererProvider.Context renderManager) {
-        super(renderManager, new ButteredGhostModel());
+        super(renderManager, new ButteredghostModel());
         this.shadowRadius = 0.6f;
     }
 
