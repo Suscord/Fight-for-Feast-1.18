@@ -7,17 +7,17 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 public class ButteredghostModel extends AnimatedGeoModel<Butteredghost> {
     @Override
-    public ResourceLocation getModelLocation(Butteredghost object) {
+    public ResourceLocation getModelResource(Butteredghost object) {
         return new ResourceLocation(FightforFeast.MOD_ID, "geo/butteredghost.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureLocation(Butteredghost object) {
+    public ResourceLocation getTextureResource(Butteredghost object) {
         return new ResourceLocation(FightforFeast.MOD_ID, "textures/entity/butteredghost/butteredghost.png");
     }
 
     @Override
-    public ResourceLocation getAnimationFileLocation(Butteredghost animatable) {
+    public ResourceLocation getAnimationResource(Butteredghost animatable) {
         return new ResourceLocation(FightforFeast.MOD_ID, "animations/butteredghost.animation.json");
     }
 }

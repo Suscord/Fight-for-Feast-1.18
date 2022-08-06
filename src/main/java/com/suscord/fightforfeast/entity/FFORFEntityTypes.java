@@ -14,7 +14,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class FFORFEntityTypes {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
-            DeferredRegister.create(ForgeRegistries.ENTITIES, FightforFeast.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, FightforFeast.MOD_ID);
 
     public static final RegistryObject<EntityType<Butteredghost>> BUTTEREDGHOST =
             ENTITY_TYPES.register("butteredghost",

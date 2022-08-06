@@ -7,17 +7,17 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 public class FruitjellyslimeModel extends AnimatedGeoModel<Fruitjellyslime> {
     @Override
-    public ResourceLocation getModelLocation(Fruitjellyslime object) {
+    public ResourceLocation getModelResource(Fruitjellyslime object) {
         return new ResourceLocation(FightforFeast.MOD_ID, "geo/fruitjellyslime.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureLocation(Fruitjellyslime object) {
+    public ResourceLocation getTextureResource(Fruitjellyslime object) {
         return new ResourceLocation(FightforFeast.MOD_ID, "textures/entity/fruitjellyslime/fruitjellyslime.png");
     }
 
     @Override
-    public ResourceLocation getAnimationFileLocation(Fruitjellyslime animatable) {
+    public ResourceLocation getAnimationResource(Fruitjellyslime animatable) {
         return new ResourceLocation(FightforFeast.MOD_ID, "animations/fruitjellyslime.animation.json");
     }
 }

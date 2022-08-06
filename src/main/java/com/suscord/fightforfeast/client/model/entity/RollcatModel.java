@@ -7,17 +7,17 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 public class RollcatModel extends AnimatedGeoModel<Rollcat> {
     @Override
-    public ResourceLocation getModelLocation(Rollcat object) {
+    public ResourceLocation getModelResource(Rollcat object) {
         return new ResourceLocation(FightforFeast.MOD_ID, "geo/rollcat.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureLocation(Rollcat object) {
+    public ResourceLocation getTextureResource(Rollcat object) {
         return new ResourceLocation(FightforFeast.MOD_ID, "textures/entity/rollcat/rollcat.png");
     }
 
     @Override
-    public ResourceLocation getAnimationFileLocation(Rollcat animatable) {
+    public ResourceLocation getAnimationResource(Rollcat animatable) {
         return new ResourceLocation(FightforFeast.MOD_ID, "animations/rollcat.animation.json");
     }
 }

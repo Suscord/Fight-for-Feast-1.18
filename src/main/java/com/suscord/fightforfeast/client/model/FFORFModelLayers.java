@@ -6,10 +6,6 @@ import net.minecraft.resources.ResourceLocation;
 
 public class FFORFModelLayers {
 
-    public static final ModelLayerLocation MAZE_SLIME = register("maze_slime");
-    public static final ModelLayerLocation MAZE_SLIME_OUTER = register("maze_slime", "outer");
-
-
     private static ModelLayerLocation register(String p_171294_) {
         return register(p_171294_, "main");
     }
