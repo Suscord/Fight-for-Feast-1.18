@@ -22,28 +22,37 @@ public class FFORFItems {
 
     //Tool
     public static final RegistryObject<Item> PEPPERMINT_LANCE = ITEMS.register("peppermint_lance",
-            () -> new SwordItem(FFORFTiers.PEPPERMINT, 2, 3, new Item.Properties().tab(FFORFCreativeModeTab.TAB_FFORF)));
+            () -> new SwordItem(FFORFTiers.PEPPERMINT, 2, 3,
+                    new Item.Properties().tab(FFORFCreativeModeTab.TAB_FFORF)));
 
     //Food
     public static final RegistryObject<Item> BUTTERED_TOAST = ITEMS.register("buttered_toast",
-            () -> new Item(new Item.Properties().tab(FFORFCreativeModeTab.TAB_FFORF).food(FFORFFoods.BUTTERED_TOAST)));
+            () -> new Item(new Item.Properties().tab(FFORFCreativeModeTab.TAB_FFORF).
+                    food(FFORFFoods.BUTTERED_TOAST)));
 
     public static final RegistryObject<Item> MILK_CHOCOLATE = ITEMS.register("milk_chocolate",
-            () -> new Item(new Item.Properties().tab(FFORFCreativeModeTab.TAB_FFORF).food(FFORFFoods.MILK_CHOCOLATE)));
+            () -> new Item(new Item.Properties().tab(FFORFCreativeModeTab.TAB_FFORF).
+                    food(FFORFFoods.MILK_CHOCOLATE)));
 
     public static final RegistryObject<Item> PEPPERMINT_CANE = ITEMS.register("peppermint_cane",
-            () -> new Item(new Item.Properties().tab(FFORFCreativeModeTab.TAB_FFORF).food(FFORFFoods.PEPPERMINT_CANE)));
+            () -> new Item(new Item.Properties().tab(FFORFCreativeModeTab.TAB_FFORF).
+                    food(FFORFFoods.PEPPERMINT_CANE)));
 
     public static final RegistryObject<Item> ROLLCAKE = ITEMS.register("rollcake",
-            () -> new Item(new Item.Properties().tab(FFORFCreativeModeTab.TAB_FFORF).food(FFORFFoods.ROLLCAKE)));
+            () -> new Item(new Item.Properties().tab(FFORFCreativeModeTab.TAB_FFORF).
+                    food(FFORFFoods.ROLLCAKE)));
 
     //Spawn Egg
-    public static final RegistryObject<Item> BGHOST_SPAWN_EGG = ITEMS.register("buttered_ghost_spawn_egg",
-            () -> new ForgeSpawnEggItem(FFORFEntityTypes.BUTTEREDGHOST,0x894e3f, 0xfff594,
+    public static final RegistryObject<Item> BGHOST_SPAWN_EGG = ITEMS.
+            register("buttered_ghost_spawn_egg",
+            () -> new ForgeSpawnEggItem(FFORFEntityTypes.BUTTEREDGHOST,0x894e3f,
+                    0xfff594,
                     new Item.Properties().tab(FFORFCreativeModeTab.TAB_FFORF)));
 
-    public static final RegistryObject<Item> ROLLCAT_SPAWN_EGG = ITEMS.register("rollcat_spawn_egg",
-            () -> new ForgeSpawnEggItem(FFORFEntityTypes.ROLLCAT,0x5d2622, 0x5d2c28,
+    public static final RegistryObject<Item> ROLLCAT_SPAWN_EGG = ITEMS.
+            register("rollcat_spawn_egg",
+            () -> new ForgeSpawnEggItem(FFORFEntityTypes.ROLLCAT,0x5d2622,
+                    0x5d2c28,
                     new Item.Properties().tab(FFORFCreativeModeTab.TAB_FFORF)));
 
     public static void register(IEventBus eventBus) {
