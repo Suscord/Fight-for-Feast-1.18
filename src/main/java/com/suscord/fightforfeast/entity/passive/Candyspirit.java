@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -23,6 +24,7 @@ import net.minecraft.world.entity.animal.FlyingAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
@@ -40,21 +42,20 @@ import java.util.EnumSet;
 
 import static com.suscord.fightforfeast.item.FFORFItems.BUTTER;
 
-public class Butteredghost extends Animal implements IAnimatable, FlyingAnimal {
+public class Candyspirit extends Animal implements IAnimatable, FlyingAnimal {
     private AnimationFactory factory = new AnimationFactory(this);
 
-    public Butteredghost(EntityType<? extends Animal> pEntityType, Level pLevel) {
+    public Candyspirit(EntityType<? extends Animal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.moveControl = new FlyingMoveControl(this, 20, true);
-        this.lookControl = new BGhostLookControl(this);
+        this.lookControl = new CSLookControl(this);
         this.setPathfindingMalus(BlockPathTypes.DANGER_FIRE, -1.0F);
         this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
         this.setPathfindingMalus(BlockPathTypes.WATER_BORDER, 16.0F);
-        this.setPathfindingMalus(BlockPathTypes.FENCE, -1.0F);
     }
     public static AttributeSupplier setAttributes() {
         return Animal.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 10.0D)
+                .add(Attributes.MAX_HEALTH, 15.0D)
                 .add(Attributes.FLYING_SPEED, (double)0.6F)
                 .add(Attributes.MOVEMENT_SPEED, (double)0.3F).build();
         }
@@ -77,7 +78,7 @@ public class Butteredghost extends Animal implements IAnimatable, FlyingAnimal {
         this.goalSelector.addGoal(1, new BreedGoal(this, 1.0D));
 //        this.goalSelector.addGoal(2, new TemptGoal(this, 1.25D, Ingredient.of(ItemTags.FLOWERS), false));
         this.goalSelector.addGoal(3, new FollowParentGoal(this, 1.25D));
-        this.goalSelector.addGoal(4, new Butteredghost.BGhostWanderGoal());
+        this.goalSelector.addGoal(4, new Candyspirit.WanderGoal());
         this.goalSelector.addGoal(5, new FloatGoal(this));
     }
 
@@ -85,13 +86,13 @@ public class Butteredghost extends Animal implements IAnimatable, FlyingAnimal {
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob pOtherParent) {
 
-        return FFORFEntityTypes.BUTTEREDGHOST.get().create(serverLevel);
+        return FFORFEntityTypes.CANDYSPIRIT.get().create(serverLevel);
     }
 
     //Animation
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.butteredghost.idle", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.candyspirit.idle", true));
         return PlayState.CONTINUE;
     }
 
@@ -132,10 +133,10 @@ public class Butteredghost extends Animal implements IAnimatable, FlyingAnimal {
     }
 
     //Random wandering
-    class BGhostWanderGoal extends Goal {
+    class WanderGoal extends Goal {
         private static final int WANDER_THRESHOLD = 22;
 
-        BGhostWanderGoal() {
+        WanderGoal() {
             this.setFlags(EnumSet.of(Goal.Flag.MOVE));
         }
 
@@ -144,14 +145,14 @@ public class Butteredghost extends Animal implements IAnimatable, FlyingAnimal {
          * method as well.
          */
         public boolean canUse() {
-            return Butteredghost.this.navigation.isDone() && Butteredghost.this.random.nextInt(10) == 0;
+            return Candyspirit.this.navigation.isDone() && Candyspirit.this.random.nextInt(10) == 0;
         }
 
         /**
          * Returns whether an in-progress EntityAIBase should continue executing
          */
         public boolean canContinueToUse() {
-            return Butteredghost.this.navigation.isInProgress();
+            return Candyspirit.this.navigation.isInProgress();
         }
 
         /**
@@ -160,7 +161,7 @@ public class Butteredghost extends Animal implements IAnimatable, FlyingAnimal {
         public void start() {
             Vec3 vec3 = this.findPos();
             if (vec3 != null) {
-                Butteredghost.this.navigation.moveTo(Butteredghost.this.navigation.createPath(new BlockPos(vec3), 1), 1.0D);
+                Candyspirit.this.navigation.moveTo(Candyspirit.this.navigation.createPath(new BlockPos(vec3), 1), 1.0D);
             }
 
         }
@@ -168,18 +169,17 @@ public class Butteredghost extends Animal implements IAnimatable, FlyingAnimal {
         @javax.annotation.Nullable
         private Vec3 findPos() {
             Vec3 vec3;
-            vec3 = Butteredghost.this.getViewVector(0.0F);
+            vec3 = Candyspirit.this.getViewVector(0.0F);
 
             int i = 8;
-            Vec3 vec32 = HoverRandomPos.getPos(Butteredghost.this, 8, 7, vec3.x, vec3.z, ((float) Math.PI / 2F), 3, 1);
-            return vec32 != null ? vec32 : AirAndWaterRandomPos.getPos(Butteredghost.this, 8, 4, -2, vec3.x, vec3.z, (double) ((float) Math.PI / 2F));
+            Vec3 vec32 = HoverRandomPos.getPos(Candyspirit.this, 8, 7, vec3.x, vec3.z, ((float) Math.PI / 2F), 3, 1);
+            return vec32 != null ? vec32 : AirAndWaterRandomPos.getPos(Candyspirit.this, 8, 4, -2, vec3.x, vec3.z, (double) ((float) Math.PI / 2F));
         }
     }
 
     //Breeding
     @Override
-    public boolean isFood(ItemStack pStack) {
-        return pStack.getItem() == BUTTER.get();
+    public boolean isFood(ItemStack pStack) {return pStack.is(Items.SUGAR);
     }
 
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
@@ -199,8 +199,8 @@ public class Butteredghost extends Animal implements IAnimatable, FlyingAnimal {
     }
 }
 
-class BGhostLookControl extends LookControl {
-    BGhostLookControl(Mob pMob) {
+class CSLookControl extends LookControl {
+    CSLookControl(Mob pMob) {
         super(pMob);
     }
 }

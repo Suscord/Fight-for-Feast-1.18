@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " S ",
+    "SBS",
+    " C "
+  ],
+  "key": {
+    "S": {
+      "item": "fightforfeast:peppermint_shard"
+    },
+    "B": {
+      "item": "fightforfeast:peppermint_block"
+    },
+    "C": {
+      "item": "fightforfeast:peppermint_cane"
+    }
+  },
+  "result": {
+    "item": "fightforfeast:peppermint_lance"
+  }
+}

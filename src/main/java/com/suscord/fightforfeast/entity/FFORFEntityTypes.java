@@ -1,7 +1,8 @@
 package com.suscord.fightforfeast.entity;
 
-import com.suscord.fightforfeast.FightforFeast;
-import com.suscord.fightforfeast.entity.passive.Butteredghost;
+import com.suscord.fightforfeast.FightforFeastMod;
+import com.suscord.fightforfeast.entity.monster.Jawbreakerspider;
+import com.suscord.fightforfeast.entity.passive.Candyspirit;
 import com.suscord.fightforfeast.entity.passive.Rollcat;
 import com.suscord.fightforfeast.entity.passive.Fruitjellyslime;
 import net.minecraft.resources.ResourceLocation;
@@ -14,25 +15,31 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class FFORFEntityTypes {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
-            DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, FightforFeast.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, FightforFeastMod.MOD_ID);
 
-    public static final RegistryObject<EntityType<Butteredghost>> BUTTEREDGHOST =
-            ENTITY_TYPES.register("butteredghost",
-                    () -> EntityType.Builder.of(Butteredghost::new, MobCategory.CREATURE)
-                            .sized(0.7f, 0.7f)
-                            .build(new ResourceLocation(FightforFeast.MOD_ID, "butteredghost").toString()));
+    public static final RegistryObject<EntityType<Candyspirit>> CANDYSPIRIT =
+            ENTITY_TYPES.register("candyspirit",
+                    () -> EntityType.Builder.of(Candyspirit::new, MobCategory.CREATURE)
+                            .sized(0.7f, 0.5f)
+                            .build(new ResourceLocation(FightforFeastMod.MOD_ID, "candyspirit").toString()));
+
+    public static final RegistryObject<EntityType<Jawbreakerspider>> JAWBREAKERSPIDER =
+            ENTITY_TYPES.register("jawbreakerspider",
+                    () -> EntityType.Builder.of(Jawbreakerspider::new, MobCategory.CREATURE)
+                            .sized(0.8f, 0.5f)
+                            .build(new ResourceLocation(FightforFeastMod.MOD_ID, "jawbreakerspider").toString()));
 
     public static final RegistryObject<EntityType<Fruitjellyslime>> FRUITJELLYSLIME =
             ENTITY_TYPES.register("fruitjellyslime",
                     () -> EntityType.Builder.of(Fruitjellyslime::new, MobCategory.CREATURE)
                             .sized(0.7f, 0.7f)
-                            .build(new ResourceLocation(FightforFeast.MOD_ID, "fruitjellyslime").toString()));
+                            .build(new ResourceLocation(FightforFeastMod.MOD_ID, "fruitjellyslime").toString()));
 
     public static final RegistryObject<EntityType<Rollcat>> ROLLCAT =
             ENTITY_TYPES.register("rollcat",
                     () -> EntityType.Builder.of(Rollcat::new, MobCategory.CREATURE)
                             .sized(0.8f, 0.6f)
-                            .build(new ResourceLocation(FightforFeast.MOD_ID, "rollcat").toString()));
+                            .build(new ResourceLocation(FightforFeastMod.MOD_ID, "rollcat").toString()));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

@@ -14,8 +14,10 @@
   "item.fightforfeast.rollcake": "롤케이크",
 
   "item.fightforfeast.buttered_ghost_spawn_egg": "버터 발린 유령 생성 알",
+  "item.fightforfeast.candy_spirit_spawn_egg": "사탕령 생성 알",
   "item.fightforfeast.rollcat_spawn_egg": "롤고양이 생성 알",
 
   "entity.fightforfeast.butteredghost": "버터 발린 유령",
+  "entity.fightforfeast.candy_spirit": "사탕령",
   "entity.fightforfeast.rollcat": "롤고양이"
 }

@@ -2,7 +2,7 @@ package com.suscord.fightforfeast.client.renderer.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.suscord.fightforfeast.FightforFeast;
+import com.suscord.fightforfeast.FightforFeastMod;
 import com.suscord.fightforfeast.client.model.entity.RollcatModel;
 import com.suscord.fightforfeast.entity.passive.Rollcat;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -19,7 +19,7 @@ public class RollcatRenderer extends GeoEntityRenderer<Rollcat> {
 
     @Override
     public ResourceLocation getTextureLocation(Rollcat instance) {
-        return new ResourceLocation(FightforFeast.MOD_ID, "textures/entity/rollcat/rollcat.png");
+        return new ResourceLocation(FightforFeastMod.MOD_ID, "textures/entity/rollcat/rollcat.png");
     }
 
     @Override

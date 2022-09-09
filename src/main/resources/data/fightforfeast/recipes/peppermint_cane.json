@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "fightforfeast:peppermint_block"
+    }
+  },
+  "result": {
+    "item": "fightforfeast:peppermint_cane",
+    "count": 4
+  }
+}

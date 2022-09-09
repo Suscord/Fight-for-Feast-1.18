@@ -1,6 +1,6 @@
 package com.suscord.fightforfeast.item;
 
-import com.suscord.fightforfeast.FightforFeast;
+import com.suscord.fightforfeast.FightforFeastMod;
 import com.suscord.fightforfeast.entity.FFORFEntityTypes;
 import net.minecraft.world.item.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
@@ -11,7 +11,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class FFORFItems {
     public static final DeferredRegister<Item> ITEMS =
-            DeferredRegister.create(ForgeRegistries.ITEMS, FightforFeast.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.ITEMS, FightforFeastMod.MOD_ID);
 
     //Misc
     public static final RegistryObject<Item> BUTTER = ITEMS.register("butter",
@@ -43,11 +43,18 @@ public class FFORFItems {
                     food(FFORFFoods.ROLLCAKE)));
 
     //Spawn Egg
+    /*
     public static final RegistryObject<Item> BGHOST_SPAWN_EGG = ITEMS.
             register("buttered_ghost_spawn_egg",
-            () -> new ForgeSpawnEggItem(FFORFEntityTypes.BUTTEREDGHOST,0x894e3f,
+            () -> new ForgeSpawnEggItem(FFORFEntityTypes.CANDYSPIRIT,0x894e3f,
                     0xfff594,
                     new Item.Properties().tab(FFORFCreativeModeTab.TAB_FFORF)));
+    */
+    public static final RegistryObject<Item> CANDYSPIRIT_SPAWN_EGG = ITEMS.
+            register("candy_spirit_spawn_egg",
+                    () -> new ForgeSpawnEggItem(FFORFEntityTypes.CANDYSPIRIT,0xebf0fa,
+                            0xf5555d,
+                            new Item.Properties().tab(FFORFCreativeModeTab.TAB_FFORF)));
 
     public static final RegistryObject<Item> ROLLCAT_SPAWN_EGG = ITEMS.
             register("rollcat_spawn_egg",

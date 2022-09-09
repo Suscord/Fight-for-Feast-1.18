@@ -2,7 +2,7 @@ package com.suscord.fightforfeast.client.renderer.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.suscord.fightforfeast.FightforFeast;
+import com.suscord.fightforfeast.FightforFeastMod;
 import com.suscord.fightforfeast.client.model.entity.FruitjellyslimeModel;
 import com.suscord.fightforfeast.entity.passive.Fruitjellyslime;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -21,7 +21,7 @@ public class FruitjellyslimeRenderer extends GeoEntityRenderer<Fruitjellyslime> 
 
     @Override
     public ResourceLocation getTextureLocation(Fruitjellyslime instance) {
-        return new ResourceLocation(FightforFeast.MOD_ID, "textures/entity/fruitjellyslime/fruitjellyslime.png");
+        return new ResourceLocation(FightforFeastMod.MOD_ID, "textures/entity/fruitjellyslime/fruitjellyslime.png");
     }
 
     //@Override

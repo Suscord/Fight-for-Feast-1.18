@@ -1,12 +1,13 @@
 package com.suscord.fightforfeast.block;
 
-import com.suscord.fightforfeast.FightforFeast;
+import com.suscord.fightforfeast.FightforFeastMod;
 import com.suscord.fightforfeast.item.FFORFCreativeModeTab;
 import com.suscord.fightforfeast.item.FFORFItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -18,10 +19,11 @@ import java.util.function.Supplier;
 
 public class FFORFBlocks {
     public static final DeferredRegister<Block> BLOCKS =
-            DeferredRegister.create(ForgeRegistries.BLOCKS, FightforFeast.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.BLOCKS, FightforFeastMod.MOD_ID);
 
     public static final RegistryObject<Block> PEPPERMINT_BLOCK = registerBlock("peppermint_block",
-            () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(5f).requiresCorrectToolForDrops()),
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(4f).requiresCorrectToolForDrops()
+                    .sound(SoundType.METAL)),
             FFORFCreativeModeTab.TAB_FFORF);
 
 

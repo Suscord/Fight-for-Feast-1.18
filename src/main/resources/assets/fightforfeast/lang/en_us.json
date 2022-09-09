@@ -14,8 +14,10 @@
   "item.fightforfeast.rollcake" : "Rollcake",
 
   "item.fightforfeast.buttered_ghost_spawn_egg": "Buttered Ghost Spawn Egg",
+  "item.fightforfeast.candy_spirit_spawn_egg": "Candy Spirit Spawn Egg",
   "item.fightforfeast.rollcat_spawn_egg": "Rollcat Spawn Egg",
 
   "entity.fightforfeast.butteredghost": "Buttered Ghost",
+  "entity.fightforfeast.candy_spirit": "Candy Spirit",
   "entity.fightforfeast.rollcat": "Rollcat"
 }
