@@ -12,12 +12,15 @@
   "item.fightforfeast.milk_chocolate": "Milk Chocolate",
   "item.fightforfeast.peppermint_cane": "Peppermint Cane",
   "item.fightforfeast.rollcake" : "Rollcake",
+  "item.fightforfeast.chocolate_torte_slice" : "Chocolate Torte Slice",
 
   "item.fightforfeast.buttered_ghost_spawn_egg": "Buttered Ghost Spawn Egg",
-  "item.fightforfeast.candy_spirit_spawn_egg": "Candy Spirit Spawn Egg",
+  "item.fightforfeast.candyspirit_spawn_egg": "Candy Spirit Spawn Egg",
   "item.fightforfeast.rollcat_spawn_egg": "Rollcat Spawn Egg",
+  "item.fightforfeast.tortetoise_spawn_egg": "Tortetoise Spawn Egg",
 
   "entity.fightforfeast.butteredghost": "Buttered Ghost",
   "entity.fightforfeast.candy_spirit": "Candy Spirit",
-  "entity.fightforfeast.rollcat": "Rollcat"
+  "entity.fightforfeast.rollcat": "Rollcat",
+  "entity.fightforfeast.tortetoise": "Tortetoise"
 }

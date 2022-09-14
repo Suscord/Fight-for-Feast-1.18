@@ -3,6 +3,7 @@ package com.suscord.fightforfeast;
 import com.mojang.logging.LogUtils;
 import com.suscord.fightforfeast.block.FFORFBlocks;
 import com.suscord.fightforfeast.client.renderer.entity.CandyspiritRenderer;
+import com.suscord.fightforfeast.client.renderer.entity.TortetoiseRenderer;
 import com.suscord.fightforfeast.entity.FFORFEntityTypes;
 import com.suscord.fightforfeast.client.renderer.entity.RollcatRenderer;
 import com.suscord.fightforfeast.item.FFORFItems;
@@ -46,6 +47,7 @@ public class FightforFeastMod
         EntityRenderers.register(FFORFEntityTypes.CANDYSPIRIT.get(), CandyspiritRenderer::new);
         //EntityRenderers.register(FFORFEntityTypes.FRUITJELLYSLIME.get(), FruitjellyslimeRenderer::new);
         EntityRenderers.register(FFORFEntityTypes.ROLLCAT.get(), RollcatRenderer::new);
+        EntityRenderers.register(FFORFEntityTypes.TORTETOISE.get(), TortetoiseRenderer::new);
     }
 
     /*

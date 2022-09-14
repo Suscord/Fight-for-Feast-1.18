@@ -42,6 +42,10 @@ public class FFORFItems {
             () -> new Item(new Item.Properties().tab(FFORFCreativeModeTab.TAB_FFORF).
                     food(FFORFFoods.ROLLCAKE)));
 
+    public static final RegistryObject<Item> CHOCO_TORTE_SLICE = ITEMS.register("chocolate_torte_slice",
+            () -> new Item(new Item.Properties().tab(FFORFCreativeModeTab.TAB_FFORF).
+                    food(FFORFFoods.CHOCO_TORTE_SLICE)));
+
     //Spawn Egg
     /*
     public static final RegistryObject<Item> BGHOST_SPAWN_EGG = ITEMS.
@@ -51,7 +55,7 @@ public class FFORFItems {
                     new Item.Properties().tab(FFORFCreativeModeTab.TAB_FFORF)));
     */
     public static final RegistryObject<Item> CANDYSPIRIT_SPAWN_EGG = ITEMS.
-            register("candy_spirit_spawn_egg",
+            register("candyspirit_spawn_egg",
                     () -> new ForgeSpawnEggItem(FFORFEntityTypes.CANDYSPIRIT,0xebf0fa,
                             0xf5555d,
                             new Item.Properties().tab(FFORFCreativeModeTab.TAB_FFORF)));
@@ -61,6 +65,12 @@ public class FFORFItems {
             () -> new ForgeSpawnEggItem(FFORFEntityTypes.ROLLCAT,0x5d2622,
                     0x5d2c28,
                     new Item.Properties().tab(FFORFCreativeModeTab.TAB_FFORF)));
+
+    public static final RegistryObject<Item> TORTETOISE_SPAWN_EGG = ITEMS.
+            register("tortetoise_spawn_egg",
+                    () -> new ForgeSpawnEggItem(FFORFEntityTypes.TORTETOISE,0x5d2c28,
+                            0x5d2622,
+                            new Item.Properties().tab(FFORFCreativeModeTab.TAB_FFORF)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

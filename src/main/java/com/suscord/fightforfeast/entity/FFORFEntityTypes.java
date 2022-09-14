@@ -2,6 +2,7 @@ package com.suscord.fightforfeast.entity;
 
 import com.suscord.fightforfeast.FightforFeastMod;
 import com.suscord.fightforfeast.entity.monster.Jawbreakerspider;
+import com.suscord.fightforfeast.entity.neutral.Tortetoise;
 import com.suscord.fightforfeast.entity.passive.Candyspirit;
 import com.suscord.fightforfeast.entity.passive.Rollcat;
 import com.suscord.fightforfeast.entity.passive.Fruitjellyslime;
@@ -40,6 +41,12 @@ public class FFORFEntityTypes {
                     () -> EntityType.Builder.of(Rollcat::new, MobCategory.CREATURE)
                             .sized(0.8f, 0.6f)
                             .build(new ResourceLocation(FightforFeastMod.MOD_ID, "rollcat").toString()));
+
+    public static final RegistryObject<EntityType<Tortetoise>> TORTETOISE =
+            ENTITY_TYPES.register("tortetoise",
+                    () -> EntityType.Builder.of(Tortetoise::new, MobCategory.CREATURE)
+                            .sized(1.0f, 1.0f)
+                            .build(new ResourceLocation(FightforFeastMod.MOD_ID, "tortetoise").toString()));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

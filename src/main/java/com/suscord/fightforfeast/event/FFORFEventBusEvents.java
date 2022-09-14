@@ -2,6 +2,7 @@ package com.suscord.fightforfeast.event;
 
 import com.suscord.fightforfeast.FightforFeastMod;
 import com.suscord.fightforfeast.entity.FFORFEntityTypes;
+import com.suscord.fightforfeast.entity.neutral.Tortetoise;
 import com.suscord.fightforfeast.entity.passive.Candyspirit;
 import com.suscord.fightforfeast.entity.passive.Rollcat;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -17,5 +18,6 @@ public class FFORFEventBusEvents {
         //event.put(FFORFEntityTypes.FRUITJELLYSLIME.get(), Fruitjellyslime.setAttributes());
         event.put(FFORFEntityTypes.CANDYSPIRIT.get(), Candyspirit.setAttributes());
         //event.put(FFORFEntityTypes.JAWBREAKERSPIDER.get(), Jawbreakerspider.createAttributes().build());
+        event.put(FFORFEntityTypes.TORTETOISE.get(), Tortetoise.setAttributes());
     }
 }
