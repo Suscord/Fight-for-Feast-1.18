@@ -14,7 +14,8 @@
                 "type": "minecraft:uniform",
                 "max": 3.0,
                 "min": 1.0,
-              "add": false
+                "add": false
+              }
             }
           ],
           "name": "fightforfeast:peppermint_shard"
