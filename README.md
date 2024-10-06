@@ -1,7 +1,7 @@
 Fight For Feast
 =
 
-a Minecraft Modification that adds World of Delightful Foods you can Explore, Fight and Eat.
+A Minecraft Modification that adds World of Delightful Foods you can Explore, Fight and Feast.
 
 ## Licensing
 Code and otherwise stated default to my [LICENSE file here](LICENSE)
