@@ -80,7 +80,12 @@ public class Jawbreakerspider extends Spider {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 35.0D).add(Attributes.MOVEMENT_SPEED, (double)0.3F);
+        return Monster.createMonsterAttributes()
+                .add(Attributes.FOLLOW_RANGE, 15.0)
+                .add(Attributes.MAX_HEALTH, 35.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.3F)
+                .add(Attributes.ARMOR, 7.0)
+                .add(Attributes.ATTACK_DAMAGE, 3.0);
     }
 
     protected SoundEvent getAmbientSound() {
