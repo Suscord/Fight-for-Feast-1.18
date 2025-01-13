@@ -1,8 +1,8 @@
 package com.gyuka08.fightforfeast.block;
 
 import com.gyuka08.fightforfeast.FightforFeastMod;
-import com.gyuka08.fightforfeast.item.FFORFCreativeModeTab;
-import com.gyuka08.fightforfeast.item.FFORFItems;
+import com.gyuka08.fightforfeast.item.FFFCreativeModeTab;
+import com.gyuka08.fightforfeast.item.FFFItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -17,14 +17,14 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
-public class FFORFBlocks {
+public class FFFBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, FightforFeastMod.MOD_ID);
 
     public static final RegistryObject<Block> PEPPERMINT_BLOCK = registerBlock("peppermint_block",
             () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(4f).requiresCorrectToolForDrops()
                     .sound(SoundType.METAL)),
-            FFORFCreativeModeTab.TAB_FFORF);
+            FFFCreativeModeTab.TAB_FFORF);
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab){
@@ -36,7 +36,7 @@ public class FFORFBlocks {
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block,
                                                                             CreativeModeTab tab) {
 
-        return FFORFItems.ITEMS.register(name, () -> new BlockItem(block.get(),
+        return FFFItems.ITEMS.register(name, () -> new BlockItem(block.get(),
                 new Item.Properties().tab(tab)));
     }
 

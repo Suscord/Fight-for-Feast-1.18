@@ -1,6 +1,5 @@
-package com.gyuka08.fightforfeast.entity.passive;
+package com.gyuka08.fightforfeast.entity.neutral;
 
-import com.gyuka08.fightforfeast.entity.FFORFEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -10,10 +9,11 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.NeutralMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -30,12 +30,15 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-import static com.gyuka08.fightforfeast.item.FFORFItems.MILK_CHOCOLATE;
+import java.util.UUID;
 
-public class Rollcat extends Animal implements IAnimatable {
+import static com.gyuka08.fightforfeast.item.FFFItems.MILK_CHOCOLATE;
+
+public class TortetoiseEntity extends Animal implements IAnimatable, NeutralMob {
+
     private AnimationFactory factory = new AnimationFactory(this);
 
-    public Rollcat(EntityType<? extends Animal> pEntityType, Level pLevel) {
+    public TortetoiseEntity(EntityType<? extends Animal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.setPathfindingMalus(BlockPathTypes.DANGER_FIRE, -1.0F);
         this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
@@ -45,38 +48,65 @@ public class Rollcat extends Animal implements IAnimatable {
 
     public static AttributeSupplier setAttributes() {
         return Animal.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 8.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.2f).build();
+                .add(Attributes.MAX_HEALTH, 30.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.15F)
+                .add(Attributes.ARMOR, 5)
+                .add(Attributes.ATTACK_DAMAGE, 3)
+                .add(Attributes.ATTACK_SPEED, 2)
+                .add(Attributes.FOLLOW_RANGE, 15).build();
     }
 
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(this));
-        this.goalSelector.addGoal(2, new PanicGoal(this, 1.25D));
-        this.goalSelector.addGoal(3, new BreedGoal(this, 1.0D));
-        this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
-//        this.goalSelector.addGoal(5, new TemptGoal(this, 1.25D, Ingredient.of((ItemLike) ModFoods.MILK_CHOCOLATE), false));
-        this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-        this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-        this.targetSelector.addGoal(9, (new HurtByTargetGoal(this)).setAlertOthers());
+        this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, true));
+        this.goalSelector.addGoal(5, new BreedGoal(this, 1.0D));
+        this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
+        this.targetSelector.addGoal(2, (new HurtByTargetGoal(this)).setAlertOthers());
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, this::isAngryAt));
+        this.targetSelector.addGoal(6, new ResetUniversalAngerTargetGoal<>(this, true));
+    }
+
+    @Nullable
+    @Override
+    public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
+        return null;
+    }
+
+    @Override
+    public int getRemainingPersistentAngerTime() {
+        return 0;
+    }
+
+    @Override
+    public void setRemainingPersistentAngerTime(int pRemainingPersistentAngerTime) {
 
     }
 
     @Nullable
     @Override
-    public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob pOtherParent) {
+    public UUID getPersistentAngerTarget() {
+        return null;
+    }
 
-        return FFORFEntityTypes.ROLLCAT.get().create(serverLevel);
+    @Override
+    public void setPersistentAngerTarget(@Nullable UUID pPersistentAngerTarget) {
+
+    }
+
+    @Override
+    public void startPersistentAngerTimer() {
+
     }
 
     //Animation
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rolcat.walk", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.tortetoise.walk", true));
             return PlayState.CONTINUE;
         }
-
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rolcat.idle", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.tortetoise.idle", true));
         return PlayState.CONTINUE;
     }
 
@@ -96,15 +126,15 @@ public class Rollcat extends Animal implements IAnimatable {
     }
 
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.CAT_AMBIENT;
+        return SoundEvents.CANDLE_AMBIENT;
     }
 
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-        return SoundEvents.CAT_HURT;
+        return SoundEvents.CAKE_ADD_CANDLE;
     }
 
     protected SoundEvent getDeathSound() {
-        return SoundEvents.CAT_DEATH;
+        return SoundEvents.WOOL_BREAK;
     }
 
     protected float getSoundVolume() {
@@ -131,5 +161,4 @@ public class Rollcat extends Animal implements IAnimatable {
 
         return super.mobInteract(player, hand);
     }
-
 }

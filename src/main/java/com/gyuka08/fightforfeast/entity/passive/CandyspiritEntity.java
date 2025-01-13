@@ -1,6 +1,6 @@
 package com.gyuka08.fightforfeast.entity.passive;
 
-import com.gyuka08.fightforfeast.entity.FFORFEntityTypes;
+import com.gyuka08.fightforfeast.entity.FFFEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -39,10 +39,10 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.EnumSet;
 
-public class Candyspirit extends Animal implements IAnimatable, FlyingAnimal {
+public class CandyspiritEntity extends Animal implements IAnimatable, FlyingAnimal {
     private AnimationFactory factory = new AnimationFactory(this);
 
-    public Candyspirit(EntityType<? extends Animal> pEntityType, Level pLevel) {
+    public CandyspiritEntity(EntityType<? extends Animal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.moveControl = new FlyingMoveControl(this, 20, true);
         this.lookControl = new CSLookControl(this);
@@ -75,7 +75,7 @@ public class Candyspirit extends Animal implements IAnimatable, FlyingAnimal {
         this.goalSelector.addGoal(1, new BreedGoal(this, 1.0D));
 //        this.goalSelector.addGoal(2, new TemptGoal(this, 1.25D, Ingredient.of(ItemTags.FLOWERS), false));
         this.goalSelector.addGoal(3, new FollowParentGoal(this, 1.25D));
-        this.goalSelector.addGoal(4, new Candyspirit.WanderGoal());
+        this.goalSelector.addGoal(4, new CandyspiritEntity.WanderGoal());
         this.goalSelector.addGoal(5, new FloatGoal(this));
     }
 
@@ -83,7 +83,7 @@ public class Candyspirit extends Animal implements IAnimatable, FlyingAnimal {
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob pOtherParent) {
 
-        return FFORFEntityTypes.CANDYSPIRIT.get().create(serverLevel);
+        return FFFEntityTypes.CANDYSPIRIT.get().create(serverLevel);
     }
 
     //Animation
@@ -142,14 +142,14 @@ public class Candyspirit extends Animal implements IAnimatable, FlyingAnimal {
          * method as well.
          */
         public boolean canUse() {
-            return Candyspirit.this.navigation.isDone() && Candyspirit.this.random.nextInt(10) == 0;
+            return CandyspiritEntity.this.navigation.isDone() && CandyspiritEntity.this.random.nextInt(10) == 0;
         }
 
         /**
          * Returns whether an in-progress EntityAIBase should continue executing
          */
         public boolean canContinueToUse() {
-            return Candyspirit.this.navigation.isInProgress();
+            return CandyspiritEntity.this.navigation.isInProgress();
         }
 
         /**
@@ -158,7 +158,7 @@ public class Candyspirit extends Animal implements IAnimatable, FlyingAnimal {
         public void start() {
             Vec3 vec3 = this.findPos();
             if (vec3 != null) {
-                Candyspirit.this.navigation.moveTo(Candyspirit.this.navigation.createPath(new BlockPos(vec3), 1), 1.0D);
+                CandyspiritEntity.this.navigation.moveTo(CandyspiritEntity.this.navigation.createPath(new BlockPos(vec3), 1), 1.0D);
             }
 
         }
@@ -166,11 +166,11 @@ public class Candyspirit extends Animal implements IAnimatable, FlyingAnimal {
         @javax.annotation.Nullable
         private Vec3 findPos() {
             Vec3 vec3;
-            vec3 = Candyspirit.this.getViewVector(0.0F);
+            vec3 = CandyspiritEntity.this.getViewVector(0.0F);
 
             int i = 8;
-            Vec3 vec32 = HoverRandomPos.getPos(Candyspirit.this, 8, 7, vec3.x, vec3.z, ((float) Math.PI / 2F), 3, 1);
-            return vec32 != null ? vec32 : AirAndWaterRandomPos.getPos(Candyspirit.this, 8, 4, -2, vec3.x, vec3.z, (double) ((float) Math.PI / 2F));
+            Vec3 vec32 = HoverRandomPos.getPos(CandyspiritEntity.this, 8, 7, vec3.x, vec3.z, ((float) Math.PI / 2F), 3, 1);
+            return vec32 != null ? vec32 : AirAndWaterRandomPos.getPos(CandyspiritEntity.this, 8, 4, -2, vec3.x, vec3.z, (double) ((float) Math.PI / 2F));
         }
     }
 
@@ -194,13 +194,15 @@ public class Candyspirit extends Animal implements IAnimatable, FlyingAnimal {
     public boolean isFlying() {
         return !this.onGround;
     }
-}
 
-class CSLookControl extends LookControl {
-    CSLookControl(Mob pMob) {
-        super(pMob);
+    class CSLookControl extends LookControl {
+        CSLookControl(Mob pMob) {
+            super(pMob);
+        }
     }
 }
+
+
 
 
 

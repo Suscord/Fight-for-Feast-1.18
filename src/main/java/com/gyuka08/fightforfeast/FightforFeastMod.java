@@ -1,14 +1,14 @@
 package com.gyuka08.fightforfeast;
 
 import com.mojang.logging.LogUtils;
-import com.gyuka08.fightforfeast.block.FFORFBlocks;
+import com.gyuka08.fightforfeast.block.FFFBlocks;
 import com.gyuka08.fightforfeast.client.renderer.entity.CandyspiritRenderer;
 import com.gyuka08.fightforfeast.client.renderer.entity.PanhornRenderer;
 import com.gyuka08.fightforfeast.client.renderer.entity.TortetoiseRenderer;
-import com.gyuka08.fightforfeast.entity.FFORFEntityTypes;
+import com.gyuka08.fightforfeast.entity.FFFEntityTypes;
 import com.gyuka08.fightforfeast.client.renderer.entity.RollcatRenderer;
-import com.gyuka08.fightforfeast.item.FFORFItems;
-import com.gyuka08.fightforfeast.sound.FFORFSounds;
+import com.gyuka08.fightforfeast.item.FFFItems;
+import com.gyuka08.fightforfeast.sound.FFFSounds;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -32,10 +32,10 @@ public class FightforFeastMod
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         eventBus.addListener(this::clientSetup);
 
-        FFORFBlocks.BLOCKS.register(eventBus);
-        FFORFEntityTypes.ENTITY_TYPES.register(eventBus);
-        FFORFItems.ITEMS.register(eventBus);
-        FFORFSounds.SOUND_EVENTS.register(eventBus);
+        FFFBlocks.BLOCKS.register(eventBus);
+        FFFEntityTypes.ENTITY_TYPES.register(eventBus);
+        FFFItems.ITEMS.register(eventBus);
+        FFFSounds.SOUND_EVENTS.register(eventBus);
 
         GeckoLib.initialize();
 
@@ -45,11 +45,11 @@ public class FightforFeastMod
 
     private void clientSetup(final FMLClientSetupEvent event) {
 
-        EntityRenderers.register(FFORFEntityTypes.CANDYSPIRIT.get(), CandyspiritRenderer::new);
-        //EntityRenderers.register(FFORFEntityTypes.FRUITJELLYSLIME.get(), FruitjellyslimeRenderer::new);
-        EntityRenderers.register(FFORFEntityTypes.PANHORN.get(), PanhornRenderer::new);
-        EntityRenderers.register(FFORFEntityTypes.ROLLCAT.get(), RollcatRenderer::new);
-        EntityRenderers.register(FFORFEntityTypes.TORTETOISE.get(), TortetoiseRenderer::new);
+        EntityRenderers.register(FFFEntityTypes.CANDYSPIRIT.get(), CandyspiritRenderer::new);
+        //EntityRenderers.register(FFFEntityTypes.FRUITJELLYSLIME.get(), FruitjellyslimeRenderer::new);
+        EntityRenderers.register(FFFEntityTypes.PANHORN.get(), PanhornRenderer::new);
+        EntityRenderers.register(FFFEntityTypes.ROLLCAT.get(), RollcatRenderer::new);
+        EntityRenderers.register(FFFEntityTypes.TORTETOISE.get(), TortetoiseRenderer::new);
     }
 
     /*

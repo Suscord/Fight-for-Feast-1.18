@@ -8,19 +8,21 @@
 
   "item.fightforfeast.peppermint_lance": "페퍼민트 랜스",
 
-  "item.fightforfeast.buttered_toast": "버터 발린 토스트",
+  "item.fightforfeast.buttered_toast": "버터 토스트",
   "item.fightforfeast.milk_chocolate": "밀크 초콜릿",
-  "item.fightforfeast.peppermint_cane": "페퍼민트 막대",
+  "item.fightforfeast.peppermint_cane": "페퍼민트 지팡이",
   "item.fightforfeast.rollcake": "롤케이크",
   "item.fightforfeast.chocolate_torte_slice": "초콜릿 토르테 조각",
 
-  "item.fightforfeast.buttered_ghost_spawn_egg": "버터 발린 유령 생성 알",
+  "item.fightforfeast.buttered_ghost_spawn_egg": "버터 유령 생성 알",
   "item.fightforfeast.candyspirit_spawn_egg": "사탕 유령 생성 알",
   "item.fightforfeast.rollcat_spawn_egg": "롤고양이 생성 알",
   "item.fightforfeast.tortetoise_spawn_egg": "토르테땅거북 생성 알",
+  "item.fightforfeast.panhorn_spawn_egg": "팬혼 생성 알",
 
-  "entity.fightforfeast.butteredghost": "버터 발린 유령",
+  "entity.fightforfeast.butteredghost": "버터 유령",
   "entity.fightforfeast.candy_spirit": "사탕 유령",
   "entity.fightforfeast.rollcat": "롤고양이",
-  "entity.fightforfeast.tortetoise": "토르테땅거북"
+  "entity.fightforfeast.tortetoise": "토르테땅거북",
+  "entity.fightforfeast.panhorn": "팬혼"
 }

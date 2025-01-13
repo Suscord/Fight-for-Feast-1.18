@@ -18,9 +18,11 @@
   "item.fightforfeast.candyspirit_spawn_egg": "Candy Spirit Spawn Egg",
   "item.fightforfeast.rollcat_spawn_egg": "Rollcat Spawn Egg",
   "item.fightforfeast.tortetoise_spawn_egg": "Tortetoise Spawn Egg",
+  "item.fightforfeast.panhorn_spawn_egg": "Panhorn Spawn Egg",
 
   "entity.fightforfeast.butteredghost": "Buttered Ghost",
   "entity.fightforfeast.candy_spirit": "Candy Spirit",
   "entity.fightforfeast.rollcat": "Rollcat",
-  "entity.fightforfeast.tortetoise": "Tortetoise"
+  "entity.fightforfeast.tortetoise": "Tortetoise",
+  "entity.fightforfeast.panhorn": "Panhorn"
 }

@@ -41,11 +41,11 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class Panhorn extends Animal implements IAnimatable, NeutralMob {
+public class PanhornEntity extends Animal implements IAnimatable, NeutralMob {
 
     private AnimationFactory factory = new AnimationFactory(this);
 
-    public Panhorn(EntityType<? extends Animal> pEntityType, Level pLevel) {
+    public PanhornEntity(EntityType<? extends Animal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.setPathfindingMalus(BlockPathTypes.DANGER_FIRE, -1.0F);
         this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);

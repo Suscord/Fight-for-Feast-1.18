@@ -20,18 +20,20 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.EnumSet;
 
-public class Fruitjellyslime extends Slime implements IAnimatable {
+public class FruitjellyslimeEntity extends Slime {
 
     private static final AttributeModifier DOUBLE_HEALTH = new AttributeModifier("FJ slime double health", 1, AttributeModifier.Operation.MULTIPLY_BASE);
 
-    public Fruitjellyslime(EntityType<? extends Fruitjellyslime> type, Level world) {
+    public FruitjellyslimeEntity(EntityType<? extends Slime> type, Level world) {
         super(type, world);
+        this.moveControl = new FruitjellyslimeEntity.SlimeMoveControl(this);
     }
 
+    @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new Fruitjellyslime.SlimeFloatGoal(this));
-        this.goalSelector.addGoal(3, new Fruitjellyslime.SlimeRandomDirectionGoal(this));
-        this.goalSelector.addGoal(5, new Fruitjellyslime.SlimeKeepOnJumpingGoal(this));
+        this.goalSelector.addGoal(1, new FruitjellyslimeEntity.SlimeFloatGoal(this));
+        this.goalSelector.addGoal(3, new FruitjellyslimeEntity.SlimeRandomDirectionGoal(this));
+        this.goalSelector.addGoal(5, new FruitjellyslimeEntity.SlimeKeepOnJumpingGoal(this));
 
     }
 
@@ -47,47 +49,15 @@ public class Fruitjellyslime extends Slime implements IAnimatable {
                 .add(Attributes.MAX_HEALTH);
     }
 
-    @Nullable
-
-    @Override
-    protected SoundEvent getHurtSound(DamageSource source) {
-        return this.isTiny() ? SoundEvents.SLIME_HURT_SMALL : SoundEvents.SLIME_HURT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return this.isTiny() ? SoundEvents.SLIME_DEATH_SMALL : SoundEvents.SLIME_DEATH;
-    }
-
-    @Override
-    protected SoundEvent getSquishSound() {
-        return this.isTiny() ? SoundEvents.SLIME_SQUISH_SMALL : SoundEvents.SLIME_SQUISH_SMALL;
-    }
-
-    @Override
-    protected SoundEvent getJumpSound() {
-        return this.isTiny() ? SoundEvents.SLIME_SQUISH_SMALL : SoundEvents.SLIME_SQUISH;
-    }
-
     float getSoundPitch() {
         float f = this.isTiny() ? 1.4F : 0.8F;
         return ((this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F) * f;
     }
 
-    @Override
-    public void registerControllers(AnimationData data) {
-
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return null;
-    }
-
     static class SlimeKeepOnJumpingGoal extends Goal {
-        private final Fruitjellyslime slime;
+        private final FruitjellyslimeEntity slime;
 
-        public SlimeKeepOnJumpingGoal(Fruitjellyslime pSlime) {
+        public SlimeKeepOnJumpingGoal(FruitjellyslimeEntity pSlime) {
             this.slime = pSlime;
             this.setFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
         }
@@ -104,20 +74,20 @@ public class Fruitjellyslime extends Slime implements IAnimatable {
          * Keep ticking a continuous task that has already been started
          */
         public void tick() {
-            ((Fruitjellyslime.SlimeMoveControl)this.slime.getMoveControl()).setWantedMovement(1.0D);
+            ((FruitjellyslimeEntity.SlimeMoveControl) this.slime.getMoveControl()).setWantedMovement(1.0D);
         }
     }
 
     static class SlimeMoveControl extends MoveControl {
         private float yRot;
         private int jumpDelay;
-        private final Fruitjellyslime slime;
+        private final FruitjellyslimeEntity slime;
         private boolean isAggressive;
 
-        public SlimeMoveControl(Fruitjellyslime pSlime) {
+        public SlimeMoveControl(FruitjellyslimeEntity pSlime) {
             super(pSlime);
             this.slime = pSlime;
-            this.yRot = 180.0F * pSlime.getYRot() / (float)Math.PI;
+            this.yRot = 180.0F * pSlime.getYRot() / (float) Math.PI;
         }
 
         public void setDirection(float pYRot) {
@@ -138,7 +108,7 @@ public class Fruitjellyslime extends Slime implements IAnimatable {
             } else {
                 this.operation = MoveControl.Operation.WAIT;
                 if (this.mob.isOnGround()) {
-                    this.mob.setSpeed((float)(this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED)));
+                    this.mob.setSpeed((float) (this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED)));
                     if (this.jumpDelay-- <= 0) {
                         this.jumpDelay = this.slime.getJumpDelay();
                         if (this.isAggressive) {
@@ -155,7 +125,7 @@ public class Fruitjellyslime extends Slime implements IAnimatable {
                         this.mob.setSpeed(0.0F);
                     }
                 } else {
-                    this.mob.setSpeed((float)(this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED)));
+                    this.mob.setSpeed((float) (this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED)));
                 }
 
             }
@@ -163,9 +133,9 @@ public class Fruitjellyslime extends Slime implements IAnimatable {
     }
 
     static class SlimeFloatGoal extends Goal {
-        private final Fruitjellyslime slime;
+        private final FruitjellyslimeEntity slime;
 
-        public SlimeFloatGoal(Fruitjellyslime pSlime) {
+        public SlimeFloatGoal(FruitjellyslimeEntity pSlime) {
             this.slime = pSlime;
             this.setFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
             pSlime.getNavigation().setCanFloat(true);
@@ -176,7 +146,7 @@ public class Fruitjellyslime extends Slime implements IAnimatable {
          * method as well.
          */
         public boolean canUse() {
-            return (this.slime.isInWater() || this.slime.isInLava()) && this.slime.getMoveControl() instanceof Fruitjellyslime.SlimeMoveControl;
+            return (this.slime.isInWater() || this.slime.isInLava()) && this.slime.getMoveControl() instanceof FruitjellyslimeEntity.SlimeMoveControl;
         }
 
         public boolean requiresUpdateEveryTick() {
@@ -191,16 +161,16 @@ public class Fruitjellyslime extends Slime implements IAnimatable {
                 this.slime.getJumpControl().jump();
             }
 
-            ((Fruitjellyslime.SlimeMoveControl)this.slime.getMoveControl()).setWantedMovement(1.2D);
+            ((FruitjellyslimeEntity.SlimeMoveControl) this.slime.getMoveControl()).setWantedMovement(1.2D);
         }
     }
 
     static class SlimeRandomDirectionGoal extends Goal {
-        private final Fruitjellyslime slime;
+        private final FruitjellyslimeEntity slime;
         private float chosenDegrees;
         private int nextRandomizeTime;
 
-        public SlimeRandomDirectionGoal(Fruitjellyslime pSlime) {
+        public SlimeRandomDirectionGoal(FruitjellyslimeEntity pSlime) {
             this.slime = pSlime;
             this.setFlags(EnumSet.of(Goal.Flag.LOOK));
         }
@@ -210,7 +180,7 @@ public class Fruitjellyslime extends Slime implements IAnimatable {
          * method as well.
          */
         public boolean canUse() {
-            return this.slime.getTarget() == null && (this.slime.isOnGround() || this.slime.isInWater() || this.slime.isInLava() || this.slime.hasEffect(MobEffects.LEVITATION)) && this.slime.getMoveControl() instanceof Fruitjellyslime.SlimeMoveControl;
+            return this.slime.getTarget() == null && (this.slime.isOnGround() || this.slime.isInWater() || this.slime.isInLava() || this.slime.hasEffect(MobEffects.LEVITATION)) && this.slime.getMoveControl() instanceof FruitjellyslimeEntity.SlimeMoveControl;
         }
 
         /**
@@ -219,36 +189,10 @@ public class Fruitjellyslime extends Slime implements IAnimatable {
         public void tick() {
             if (--this.nextRandomizeTime <= 0) {
                 this.nextRandomizeTime = this.adjustedTickDelay(40 + this.slime.getRandom().nextInt(60));
-                this.chosenDegrees = (float)this.slime.getRandom().nextInt(360);
+                this.chosenDegrees = (float) this.slime.getRandom().nextInt(360);
             }
 
-            ((Fruitjellyslime.SlimeMoveControl)this.slime.getMoveControl()).setDirection(this.chosenDegrees);
+            ((FruitjellyslimeEntity.SlimeMoveControl) this.slime.getMoveControl()).setDirection(this.chosenDegrees);
         }
-    }
-
-    /*
-    @Override
-    protected boolean spawnCustomParticles() {
-        // [VanillaCopy] from super tick with own particles
-        int i = getSize();
-        for (int j = 0; j < i * 8; ++j) {
-            float f = this.getRandom().nextFloat() * ((float) Math.PI * 2F);
-            float f1 = this.getRandom().nextFloat() * 0.5F + 0.5F;
-            float f2 = Mth.sin(f) * i * 0.5F * f1;
-            float f3 = Mth.cos(f) * i * 0.5F * f1;
-            Level world = this.getLevel();
-            double d0 = this.getX() + f2;
-            double d1 = this.getZ() + f3;
-            BlockState state = block.MAZESTONE_BRICK.get().defaultBlockState();
-            world.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, state), d0, this.getBoundingBox().minY, d1, 0.0D, 0.0D, 0.0D);
-        }
-        return true;
-    }
-    */
-
-    @Override
-    protected float getSoundVolume() {
-
-        return 0.1F * this.getSize();
     }
 }

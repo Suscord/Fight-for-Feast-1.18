@@ -24,6 +24,7 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.navigation.WallClimberNavigation;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Spider;
@@ -33,23 +34,23 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
-public class Jawbreakerspider extends Spider {
-    private static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(Jawbreakerspider.class, EntityDataSerializers.BYTE);
+public class JawbreakerspiderEntity extends Monster {
+    private static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(JawbreakerspiderEntity.class, EntityDataSerializers.BYTE);
 
-    public Jawbreakerspider(EntityType<? extends net.minecraft.world.entity.monster.Spider> pEntityType, Level pLevel) {
+    public JawbreakerspiderEntity(EntityType<? extends JawbreakerspiderEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(3, new LeapAtTargetGoal(this, 0.4F));
-        this.goalSelector.addGoal(4, new Jawbreakerspider.SpiderAttackGoal(this));
+        this.goalSelector.addGoal(4, new JawbreakerspiderEntity.SpiderAttackGoal(this));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 0.8D));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-        this.targetSelector.addGoal(2, new Jawbreakerspider.SpiderTargetGoal<>(this, Player.class));
-        this.targetSelector.addGoal(3, new Jawbreakerspider.SpiderTargetGoal<>(this, IronGolem.class));
+        this.targetSelector.addGoal(2, new JawbreakerspiderEntity.SpiderTargetGoal<>(this, Player.class));
+        this.targetSelector.addGoal(3, new JawbreakerspiderEntity.SpiderTargetGoal<>(this, IronGolem.class));
     }
 
     /**
@@ -79,8 +80,11 @@ public class Jawbreakerspider extends Spider {
 
     }
 
-    public static AttributeSupplier.Builder createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 35.0D).add(Attributes.MOVEMENT_SPEED, (double)0.3F);
+    public static AttributeSupplier setAttributes() {
+        return Monster.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 16.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.3F)
+                .add(Attributes.ARMOR, 8).build();
     }
 
     protected SoundEvent getAmbientSound() {
@@ -146,7 +150,7 @@ public class Jawbreakerspider extends Spider {
     }
 
     static class SpiderAttackGoal extends MeleeAttackGoal {
-        public SpiderAttackGoal(Jawbreakerspider pSpider) {
+        public SpiderAttackGoal(JawbreakerspiderEntity pSpider) {
             super(pSpider, 1.0D, true);
         }
 
@@ -178,7 +182,7 @@ public class Jawbreakerspider extends Spider {
 
 
     static class SpiderTargetGoal<T extends LivingEntity> extends NearestAttackableTargetGoal<T> {
-        public SpiderTargetGoal(net.minecraft.world.entity.monster.Spider pSpider, Class<T> pEntityTypeToTarget) {
+        public SpiderTargetGoal(JawbreakerspiderEntity pSpider, Class<T> pEntityTypeToTarget) {
             super(pSpider, pEntityTypeToTarget, true);
         }
 
