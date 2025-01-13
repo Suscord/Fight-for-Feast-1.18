@@ -24,6 +24,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
@@ -45,7 +46,7 @@ public class CandyspiritEntity extends Animal implements IAnimatable, FlyingAnim
     public CandyspiritEntity(EntityType<? extends Animal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.moveControl = new FlyingMoveControl(this, 20, true);
-        this.lookControl = new CSLookControl(this);
+        this.lookControl = new CandySpiritLookControl(this);
         this.setPathfindingMalus(BlockPathTypes.DANGER_FIRE, -1.0F);
         this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
         this.setPathfindingMalus(BlockPathTypes.WATER_BORDER, 16.0F);
@@ -73,7 +74,7 @@ public class CandyspiritEntity extends Animal implements IAnimatable, FlyingAnim
 
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new BreedGoal(this, 1.0D));
-//        this.goalSelector.addGoal(2, new TemptGoal(this, 1.25D, Ingredient.of(ItemTags.FLOWERS), false));
+        this.goalSelector.addGoal(2, new TemptGoal(this, 1.25D, Ingredient.of(Items.SUGAR), false));
         this.goalSelector.addGoal(3, new FollowParentGoal(this, 1.25D));
         this.goalSelector.addGoal(4, new CandyspiritEntity.WanderGoal());
         this.goalSelector.addGoal(5, new FloatGoal(this));
@@ -195,14 +196,12 @@ public class CandyspiritEntity extends Animal implements IAnimatable, FlyingAnim
         return !this.onGround;
     }
 
-    class CSLookControl extends LookControl {
-        CSLookControl(Mob pMob) {
+    static class CandySpiritLookControl extends LookControl {
+        CandySpiritLookControl(Mob pMob) {
             super(pMob);
         }
     }
+
+
 }
-
-
-
-
 

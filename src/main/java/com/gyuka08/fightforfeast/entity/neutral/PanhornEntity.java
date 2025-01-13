@@ -2,6 +2,8 @@ package com.gyuka08.fightforfeast.entity.neutral;
 
 import java.util.UUID;
 import javax.annotation.Nullable;
+
+import com.gyuka08.fightforfeast.entity.FFORFEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -14,15 +16,11 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.NeutralMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.BreedGoal;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
@@ -30,6 +28,8 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
@@ -71,6 +71,7 @@ public class PanhornEntity extends Animal implements IAnimatable, NeutralMob {
             this.goalSelector.addGoal(1, new FloatGoal(this));
             this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 2.0D, true));
             this.goalSelector.addGoal(5, new BreedGoal(this, 1.0D));
+            this.goalSelector.addGoal(6, new TemptGoal(this, 1.0D, Ingredient.of(Items.WHEAT), true));
             this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
             this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 8.0F));
             this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
@@ -82,12 +83,16 @@ public class PanhornEntity extends Animal implements IAnimatable, NeutralMob {
     @org.jetbrains.annotations.Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
-        return null;
+        return FFORFEntityTypes.PANHORN.get().create(pLevel);
     }
 
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_REMAINING_ANGER_TIME, 0);
+    }
+
+    static class PanhornDash {
+
     }
 
     //Animation
@@ -126,11 +131,11 @@ public class PanhornEntity extends Animal implements IAnimatable, NeutralMob {
     */
 
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-        return SoundEvents.PLAYER_HURT;
+        return SoundEvents.HORSE_HURT;
     }
 
     protected SoundEvent getDeathSound() {
-        return SoundEvents.PLAYER_DEATH;
+        return SoundEvents.SKELETON_HORSE_DEATH;
     }
 
     /**
@@ -139,7 +144,8 @@ public class PanhornEntity extends Animal implements IAnimatable, NeutralMob {
      */
     public boolean isFood(ItemStack pStack) {
         Item item = pStack.getItem();
-        return item.isEdible() && pStack.getFoodProperties(this).isMeat();
+//        return item.isEdible() && pStack.getFoodProperties(this).isMeat();
+        return pStack.is(Items.HAY_BLOCK);
     }
 
     /**
